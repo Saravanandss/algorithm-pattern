@@ -1,4 +1,4 @@
-# Coding Patterns — Interview Drill Log
+# Coding Patterns
 
 Working solutions to classic problems, one per algorithmic
 pattern, each annotated with the mistakes made on the way to the final
