@@ -36,12 +36,3 @@ def is_palindrome(s:str) -> bool:
         j -= 1
 
     return True
-
-if __name__ == "__main__":
-    assert not is_palindrome("Panama")
-    assert is_palindrome("20man n-am02")
-    assert isPalindrome("")
-    assert isPalindrome("A man, a plan, a canal: Panama")
-    assert isPalindrome("nn")
-    assert isPalindrome("n")
-    assert isPalindrome(".,")

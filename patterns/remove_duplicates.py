@@ -32,10 +32,3 @@ def remove_duplicates(nums: list[int]) -> int:
             nums[i] = nums[j]
 
     return i + 1
-
-if __name__ == "__main__":
-    print(remove_duplicates([1,1,2,3,3]))
-    print(remove_duplicates([1,2,3]))
-    print(remove_duplicates([]))
-    print(remove_duplicates([2, 2, 2, 2]))
-    print(remove_duplicates([3]))
