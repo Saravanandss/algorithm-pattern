@@ -9,7 +9,7 @@ import pytest
 from patterns.subarray_sum import subarray_sum
 from patterns.remove_duplicates import remove_duplicates
 from patterns.is_palindrome import is_palindrome
-
+from dp.climbing_stairs import climbing_stairs
 
 #-------subarray_sum
 @pytest.mark.parametrize(
@@ -71,3 +71,17 @@ def test_remove_duplicates(nums, expected_count, expected_prefix):
     ]                   )
 def test_is_palindrome(s, expected):
     assert is_palindrome(s) is expected
+
+#-------climbing_stairs
+@pytest.mark.parametrize(
+    "n, expected",
+    [
+        (-1, 0),
+        (0, 0),
+        (1, 1),
+        (2, 2),
+        (4, 5),
+        (6, 13),
+    ])
+def test_climbing_stairs(n, expected):
+    assert climbing_stairs(n) == expected

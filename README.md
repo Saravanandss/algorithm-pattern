@@ -3,7 +3,7 @@
 Working solutions to classic problems, one per algorithmic
 pattern, each annotated with the mistakes made on the way to the final
 version. The bugs are documented deliberately.
-
+    
 ## Patterns covered
 
 | Problem | Pattern | Time / Space | Trap documented |
@@ -11,6 +11,7 @@ version. The bugs are documented deliberately.
 | [Subarray Sum Equals K](patterns/subarray_sum.py) | Prefix sum + hash map | O(n) / O(n) | Insert-before-lookup self-match when k = 0 |
 | [Remove Duplicates (sorted, in-place)](patterns/remove_duplicates.py) | Two pointers (reader/writer) | O(n) / O(1) | Shadow count variable going stale at loop exit |
 | [Valid Palindrome](patterns/is_palindrome.py) | Two pointers (converging, with skip) | O(n) / O(1) | Unbounded skip loop walking off the string |
+| [Climbing Stairs](dp/climbing_stairs.py) | Dynamic programming resembling Fibonacci Sequence | O(n) / O(1) | One and two steps allowed incidentally made this function fibonacci. If the allowed steps were {1, 2, 3} the function would be f(n) = f(n-1) + f(n-2) + f(n-2) |
 
 ## Running the tests
 
