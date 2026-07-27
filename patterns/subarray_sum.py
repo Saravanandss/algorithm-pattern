@@ -14,6 +14,7 @@ Time: O(n)  Space: O(n)
 """
 from collections import defaultdict
 
+
 def subarray_sum(nums: list[int], k: int) -> int:
     """Return the number of contiguous subarrays of nums summing to k.
 

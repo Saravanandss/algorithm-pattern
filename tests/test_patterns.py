@@ -6,10 +6,13 @@ that exit loops in unexpected ways, because that is where the bugs lived.
 """
 
 import pytest
-from patterns.subarray_sum import subarray_sum
-from patterns.remove_duplicates import remove_duplicates
-from patterns.is_palindrome import is_palindrome
+
 from dp.climbing_stairs import climbing_stairs
+from patterns.is_palindrome import is_palindrome
+from patterns.longest_substring import longest_substring
+from patterns.remove_duplicates import remove_duplicates
+from patterns.subarray_sum import subarray_sum
+
 
 #-------subarray_sum
 @pytest.mark.parametrize(
@@ -85,3 +88,18 @@ def test_is_palindrome(s, expected):
     ])
 def test_climbing_stairs(n, expected):
     assert climbing_stairs(n) == expected
+
+#-------longest_substring
+@pytest.mark.parametrize(
+    "s, expected",
+    [
+        ("abcabcbb", 3),
+        ("bbbbb", 1),
+        ("pwwkew", 3),
+        ("a", 1),
+        ("", 0),
+        ("ab", 2),
+    ]
+)
+def test_longest_substring(s, expected):
+    assert longest_substring(s) == expected
