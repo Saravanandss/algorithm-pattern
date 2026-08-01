@@ -10,6 +10,7 @@ import pytest
 from dp.climbing_stairs import climbing_stairs
 from patterns.is_palindrome import is_palindrome
 from patterns.longest_substring import longest_substring
+from patterns.product_of_array import product_of_array, product_of_array_v2
 from patterns.remove_duplicates import remove_duplicates
 from patterns.subarray_sum import subarray_sum
 
@@ -103,3 +104,20 @@ def test_climbing_stairs(n, expected):
 )
 def test_longest_substring(s, expected):
     assert longest_substring(s) == expected
+
+#-------product_of_array
+@pytest.mark.parametrize(
+    "nums, expected",
+    [
+        ([1,2,3,4], [24, 12, 8, 6]),
+        ([1,0,3,4],[0, 12, 0, 0]),
+        ([7], [1]),
+        ([-1,2,3], [6, -3, -2]),
+        ([1,1,1], [1, 1, 1]),
+        ([1,1,0], [0, 0, 1]),
+        ([], []),
+    ]
+)
+def test_product_of_array(nums, expected):
+    assert product_of_array(nums) == expected
+    assert product_of_array_v2(nums) == expected
