@@ -7,7 +7,7 @@ product_of_array version time / space complexity O(n) / O(n)
 product_of_array_v2 version time / space complexity O(n) / O(1)
 """
 
-def product_of_array(nums):
+def product_of_array(nums: list[int]) -> list[int]:
     """
         First draft — correct but over-engineered. Kept as a learning record.
 
