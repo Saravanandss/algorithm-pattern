@@ -18,6 +18,7 @@ from patterns.longest_substring import longest_substring
 from patterns.product_of_array import product_of_array, product_of_array_v2
 from patterns.remove_duplicates import remove_duplicates
 from patterns.subarray_sum import subarray_sum
+from patterns.universal_sink import find_universal_sink
 
 
 # -------subarray_sum
@@ -177,3 +178,34 @@ def test_find_kth_largest_value_error(nums, k):
         find_kth_largest_min_heap(nums, k)
     with pytest.raises(ValueError):
         find_kth_largest_quickselect(nums, k)
+
+@pytest.mark.parametrize(
+    "graph, expected",
+    [
+        ([
+        [0, 0, 0, 1, 0],
+        [1, 0, 0, 1, 0],
+        [1, 0, 0, 1, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0],
+        ], 3),
+
+        ([
+        [1, 1, 1, 1],
+        [1, 0, 0, 1],
+        [0, 0, 0, 0],
+        [0, 0, 1, 1],
+        ], None),
+        ([
+        [1, 1, 1, 1],
+        [1, 0, 0, 1],
+        [0, 0, 1, 1],
+        [0, 0, 0, 0]
+        ], 3),
+        ([[0]], 0),
+        ([[0,1],
+          [0,0]], 1),
+        ([], None),
+    ])
+def test_find_universal_sink(graph, expected):
+    assert find_universal_sink(graph) == expected
