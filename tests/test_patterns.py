@@ -8,6 +8,7 @@ that exit loops in unexpected ways, because that is where the bugs lived.
 import pytest
 
 from dp.climbing_stairs import climbing_stairs
+from patterns.count_islands import count_islands, count_islands_v2, count_islands_v3
 from patterns.is_palindrome import is_palindrome
 from patterns.kth_largest_element import (
     find_kth_largest_max_heap,
@@ -80,7 +81,8 @@ def test_remove_duplicates(nums, expected_count, expected_prefix):
         ("Aa", True),  # case-insensitive
         ("12321", True),  # pure digits
         ("ab,,,,ba c", False),  # punctuation run mid-string
-    ])
+    ],
+)
 def test_is_palindrome(s, expected):
     assert is_palindrome(s) is expected
 
@@ -95,7 +97,8 @@ def test_is_palindrome(s, expected):
         (2, 2),
         (4, 5),
         (6, 13),
-    ])
+    ],
+)
 def test_climbing_stairs(n, expected):
     assert climbing_stairs(n) == expected
 
@@ -110,7 +113,7 @@ def test_climbing_stairs(n, expected):
         ("a", 1),
         ("", 0),
         ("ab", 2),
-    ]
+    ],
 )
 def test_longest_substring(s, expected):
     assert longest_substring(s) == expected
@@ -127,7 +130,7 @@ def test_longest_substring(s, expected):
         ([1, 1, 1], [1, 1, 1]),
         ([1, 1, 0], [0, 0, 1]),
         ([], []),
-    ]
+    ],
 )
 def test_product_of_array(nums, expected):
     assert product_of_array(nums) == expected
@@ -142,11 +145,12 @@ def test_product_of_array(nums, expected):
         ([3, 2, 3, 1, 2, 4, 5, 5, 6], 4, 4),
         ([1, 2, 3, 4, 5, 6, 7, 8], 3, 6),
         ([8, 7, 6, 5, 4, 3, 2, 1], 3, 6),
-        ([-1, -2, -3, -4, -5, -6, -7, -8], 3, -3)
-    ]
+        ([-1, -2, -3, -4, -5, -6, -7, -8], 3, -3),
+    ],
 )
 def test_find_kth_largest_max_heap(nums, k, expected):
     assert find_kth_largest_max_heap(nums, k) == expected
+
 
 @pytest.mark.parametrize(
     "nums, k, expected",
@@ -155,8 +159,8 @@ def test_find_kth_largest_max_heap(nums, k, expected):
         ([3, 2, 3, 1, 2, 4, 5, 5, 6], 4, 4),
         ([1, 2, 3, 4, 5, 6, 7, 8], 3, 6),
         ([8, 7, 6, 5, 4, 3, 2, 1], 3, 6),
-        ([-1, -2, -3, -4, -5, -6, -7, -8], 3, -3)
-    ]
+        ([-1, -2, -3, -4, -5, -6, -7, -8], 3, -3),
+    ],
 )
 def test_find_kth_largest_max_heap2(nums, k, expected):
     assert find_kth_largest_min_heap(nums, k) == expected
@@ -169,7 +173,7 @@ def test_find_kth_largest_max_heap2(nums, k, expected):
         ([], 3),  # empty array
         ([3, 2], 3),  # k larger than len(nums)
         ([3, 2], 0),  # k below 1
-    ]
+    ],
 )
 def test_find_kth_largest_value_error(nums, k):
     with pytest.raises(ValueError):
@@ -179,33 +183,50 @@ def test_find_kth_largest_value_error(nums, k):
     with pytest.raises(ValueError):
         find_kth_largest_quickselect(nums, k)
 
+
 @pytest.mark.parametrize(
     "graph, expected",
     [
-        ([
-        [0, 0, 0, 1, 0],
-        [1, 0, 0, 1, 0],
-        [1, 0, 0, 1, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 1, 0],
-        ], 3),
-
-        ([
-        [1, 1, 1, 1],
-        [1, 0, 0, 1],
-        [0, 0, 0, 0],
-        [0, 0, 1, 1],
-        ], None),
-        ([
-        [1, 1, 1, 1],
-        [1, 0, 0, 1],
-        [0, 0, 1, 1],
-        [0, 0, 0, 0]
-        ], 3),
+        (
+            [
+                [0, 0, 0, 1, 0],
+                [1, 0, 0, 1, 0],
+                [1, 0, 0, 1, 0],
+                [0, 0, 0, 0, 0],
+                [0, 0, 0, 1, 0],
+            ],
+            3,
+        ),
+        (
+            [
+                [1, 1, 1, 1],
+                [1, 0, 0, 1],
+                [0, 0, 0, 0],
+                [0, 0, 1, 1],
+            ],
+            None,
+        ),
+        ([[1, 1, 1, 1], [1, 0, 0, 1], [0, 0, 1, 1], [0, 0, 0, 0]], 3),
         ([[0]], 0),
-        ([[0,1],
-          [0,0]], 1),
+        ([[0, 1], [0, 0]], 1),
         ([], None),
-    ])
+    ],
+)
 def test_find_universal_sink(graph, expected):
     assert find_universal_sink(graph) == expected
+
+
+@pytest.mark.parametrize(
+    "grid, expected",
+    [
+        ([[1, 1, 0, 0, 0], [1, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 1]], 3),
+        ([[1, 1, 1, 1], [1, 1, 0, 1], [0, 0, 1, 0], [0, 1, 1, 0]], 2),
+        ([[1]], 1),
+        ([[0]], 0),
+        ([], 0),
+    ],
+)
+def test_count_islands(grid, expected):
+    assert count_islands(grid) == expected
+    assert count_islands_v2(grid) == expected
+    assert count_islands_v3(grid) == expected
