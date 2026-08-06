@@ -121,8 +121,9 @@ def count_islands_v3(grid: list[list[int]]) -> int:
         nodes = deque()
         nodes.append(node)
         visited[x][y] = 1
-        while node:
-            x, y = node
+
+        while nodes:
+            x, y = nodes.popleft()
             if x + 1 < m and grid[x + 1][y] == 1 and visited[x + 1][y] == 0:
                 nodes.append((x + 1, y))
                 visited[x + 1][y] = 1
@@ -135,8 +136,6 @@ def count_islands_v3(grid: list[list[int]]) -> int:
             if y - 1 >= 0 and grid[x][y - 1] == 1 and visited[x][y - 1] == 0:
                 nodes.append((x, y - 1))
                 visited[x][y - 1] = 1
-
-            node = nodes.popleft() if nodes else None
 
     for i in range(m):
         for j in range(n):

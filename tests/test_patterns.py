@@ -8,6 +8,7 @@ that exit loops in unexpected ways, because that is where the bugs lived.
 import pytest
 
 from dp.climbing_stairs import climbing_stairs
+from patterns.clear_path import find_clear_path
 from patterns.count_islands import count_islands, count_islands_v2, count_islands_v3
 from patterns.is_palindrome import is_palindrome
 from patterns.kth_largest_element import (
@@ -230,3 +231,36 @@ def test_count_islands(grid, expected):
     assert count_islands(grid) == expected
     assert count_islands_v2(grid) == expected
     assert count_islands_v3(grid) == expected
+
+
+@pytest.mark.parametrize(
+    "grid, expected",
+    [
+        # given examples
+        ([[0, 1], [1, 0]], 2),
+        ([[0, 0, 0], [1, 1, 0], [1, 1, 0]], 4),
+        ([[0]], 1),
+        ([[1]], -1),
+        ([], -1),
+        ([[1, 0], [0, 0]], -1),
+        ([[0, 0], [0, 1]], -1),
+        ([[0, 1], [1, 1]], -1),
+        ([[0, 0, 0], [1, 1, 1], [0, 0, 0]], -1),
+        ([[0, 0, 0], [0, 0, 0], [0, 0, 0]], 3),
+        ([[0, 1, 0], [1, 0, 1], [0, 1, 0]], 3),
+        ([[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]], 6),
+        ([[0, 1, 1, 1], [0, 0, 0, 1], [1, 1, 0, 0], [1, 1, 1, 0]], 4),
+        (
+            [
+                [0, 0, 0, 0, 0],
+                [1, 1, 1, 1, 0],
+                [0, 0, 0, 0, 0],
+                [0, 1, 1, 1, 1],
+                [0, 0, 0, 0, 0],
+            ],
+            13,
+        ),
+    ],
+)
+def test_find_clear_path(grid, expected):
+    assert find_clear_path(grid) == expected
