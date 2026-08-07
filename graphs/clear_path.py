@@ -4,7 +4,7 @@ to the bottom-right (n-1, n-1). A clear path moves only through cells containing
 (including diagonals). The length is the number of cells visited. If no path exists, return -1.
 Example: [[0,1],[1,0]] → 2. [[0,0,0],[1,1,0],[1,1,0]] → 4. If grid[0][0] or grid[n-1][n-1] is 1 → -1.
 
-Shortest Clear Path in a Binary Matrix — BFS on an implicit grid graph.
+Shortest Clear Path in a Binary Matrix — BFS on an implicit grid graphs.
 
 WHY BFS AND NOT DFS — the guarantee, not a speedup:
 BFS explores in expanding rings: every cell at distance d is fully processed

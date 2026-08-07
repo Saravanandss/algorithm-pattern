@@ -1,3 +1,5 @@
+import sys
+
 import pytest
 
 from patterns.kth_largest_element import (
@@ -7,6 +9,8 @@ from patterns.kth_largest_element import (
 )
 
 
+@pytest.mark.skipif(sys.version_info < (3, 14),
+                    reason="heapq.heapify_max is public API from Python 3.14")
 @pytest.mark.parametrize(
     "nums, k, expected",
     [
@@ -22,6 +26,8 @@ def test_find_kth_largest_max_heap(nums, k, expected):
     assert find_kth_largest_quickselect(nums, k) == expected
     assert find_kth_largest_max_heap(nums, k) == expected
 
+@pytest.mark.skipif(sys.version_info < (3, 14),
+                    reason="heapq.heapify_max is public API from Python 3.14")
 @pytest.mark.parametrize(
     "nums, k",
     [

@@ -34,6 +34,6 @@ All suites include the adversarial cases that broke earlier drafts.
 ├── dp/                # dynamic programming
 ├── graphs/            # traversal, components, grid-as-graph
 ├── patterns/          # arrays, strings, heaps, windows
-├── tests/             # mirrors the source tree; oracles.py holds references
+├── tests/             # mirrors the source tree
 └── README.md
 ```

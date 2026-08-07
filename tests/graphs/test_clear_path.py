@@ -1,6 +1,6 @@
 import pytest
 
-from graph.clear_path import find_clear_path
+from graphs.clear_path import find_clear_path
 
 
 @pytest.mark.parametrize(

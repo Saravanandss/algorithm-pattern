@@ -1,6 +1,6 @@
 import pytest
 
-from graph.count_islands import count_islands, count_islands_v2, count_islands_v3
+from graphs.count_islands import count_islands, count_islands_v2, count_islands_v3
 
 
 @pytest.mark.parametrize(
@@ -17,4 +17,3 @@ def test_count_islands(grid, expected):
     assert count_islands(grid) == expected
     assert count_islands_v2(grid) == expected
     assert count_islands_v3(grid) == expected
-
